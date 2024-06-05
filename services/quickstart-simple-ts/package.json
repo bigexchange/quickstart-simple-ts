@@ -5,7 +5,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@bigid/apps-infrastructure-node-js": "^0.2.0",
+    "@bigid/apps-infrastructure-node-js": "^1.200.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.2",
     "ts-node": "^10.9.2",

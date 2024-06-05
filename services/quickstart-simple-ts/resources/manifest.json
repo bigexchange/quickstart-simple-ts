@@ -18,7 +18,7 @@
     }],
     "actions": [{
         "action_id": "Test Action",
-        "description": "Does nothing. ",
+        "description": "Does nothing.",
         "is_sync": true,
         "action_params": [
         {

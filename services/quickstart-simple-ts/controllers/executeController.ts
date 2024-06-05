@@ -1,11 +1,12 @@
 import {
   ActionResponseDetails,
-  appLogger,
   ExecutionContext,
   ExecutionProvider,
   StatusEnum,
 } from '@bigid/apps-infrastructure-node-js';
 import { Response } from "express";
+
+declare const appLogger: import("log4js").Logger;
 
 export class ExecutionController extends ExecutionProvider {
 
