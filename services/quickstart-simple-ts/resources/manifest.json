@@ -4,8 +4,18 @@
     "category": "utility",
     "license_type":"FREE",
     "vendor": "BigID",
+    "version": "0.0.0",
     "license_verification_key": "",
-    "global_params": [],
+    "global_params": [{
+        "param_name": "EXAMPLE_PARAM",
+        "param_type": "String",
+        "is_cleartext": true,
+        "param_description": "A concise description of your global parameter.",
+        "default_value": "this is the default",
+        "hint": "A hint on filling in this parameter",
+        "param_priority": "primary",
+        "is_mandatory": false
+    }],
     "actions": [{
         "action_id": "Test Action",
         "description": "Does nothing. ",
