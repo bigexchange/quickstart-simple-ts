@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="1" errors="0" time="0.615">
-  <testsuite name="Testing executeController" errors="0" failures="1" skipped="0" timestamp="2024-06-10T22:16:19" time="0.561" tests="1">
-    <testcase classname="Testing executeController Testing Execute Action" name="Testing executeController Testing Execute Action" time="0.001">
-      <failure>Error: expect(jest.fn()).toHaveBeenCalledTimes(expected)
-
-Expected number of calls: 1
-Received number of calls: 0
-    at /Users/gabe/quickstart-simple-ts/services/quickstart-simple-ts/tests/executeController.test.ts:18:50
-    at Generator.next (&lt;anonymous&gt;)
-    at fulfilled (/Users/gabe/quickstart-simple-ts/services/quickstart-simple-ts/tests/executeController.test.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+<testsuites name="jest tests" tests="3" failures="0" errors="0" time="0.618">
+  <testsuite name="Testing actions..." errors="0" failures="0" skipped="0" timestamp="2024-06-11T18:07:23" time="0.358" tests="1">
+    <testcase classname="Testing actions... Testing &quot;Test Action&quot;" name="Testing actions... Testing &quot;Test Action&quot;" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Testing Execute Controller..." errors="0" failures="0" skipped="0" timestamp="2024-06-11T18:07:24" time="0.203" tests="2">
+    <testcase classname="Testing Execute Controller... Testing &quot;Test Action&quot;" name="Testing Execute Controller... Testing &quot;Test Action&quot;" time="0">
+    </testcase>
+    <testcase classname="Testing Execute Controller... Testing made up action" name="Testing Execute Controller... Testing made up action" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

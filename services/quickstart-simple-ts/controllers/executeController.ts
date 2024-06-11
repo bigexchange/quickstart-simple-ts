@@ -4,9 +4,11 @@ import {
   ExecutionProvider,
   StatusEnum,
 } from '@bigid/apps-infrastructure-node-js';
+import { executeTestAction } from '../utils/actions';
 import { Response } from "express";
+import { getLogger } from "log4js";
 
-declare const appLogger: import("log4js").Logger;
+// declare const appLogger: import("log4js").Logger;
 
 export class ExecutionController extends ExecutionProvider {
 
@@ -18,8 +20,7 @@ export class ExecutionController extends ExecutionProvider {
       switch (action) {
 
         case ("Test Action"):
-          
-          console.log('Test Action was called from a BigID server! Our ExecutionContext is '+ JSON.stringify(executionContext));
+          executeTestAction(executionContext);
           this.generateSyncSuccessMessage(res, executionId, "Did nothing successfully!");
           break;
 
@@ -33,6 +34,7 @@ export class ExecutionController extends ExecutionProvider {
                 `Got unresolved action = ${action}`));
       }
     } catch (error) {
+      const appLogger = getLogger();
       appLogger.error(error);
       this.generateFailedResponse(res, executionId, error instanceof Error ? error.message : 'unknown error');
     }

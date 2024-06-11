@@ -49,7 +49,7 @@ export const mockResponse = () => {
     // replace the following () => res
     // with your function stub/mock of choice
     // making sure they still return `res`
-    res.status = () => res;
-    res.json = () => res;
+    res.status = jest.fn().mockReturnThis();
+    res.json = jest.fn();
     return res;
 };
