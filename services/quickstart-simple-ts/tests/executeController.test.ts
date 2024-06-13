@@ -10,9 +10,9 @@ import { getLogger } from "log4js";
 
 let mockedExecuteTestAction = executeTestAction as jest.Mock;
 let mockedGetLogger = getLogger as jest.Mock;
-mockedGetLogger.mockReturnValue({
-    error: jest.fn()
-});
+let mockedLoggerError = jest.fn();
+
+mockedGetLogger.mockReturnValue({error: mockedLoggerError});
 
 describe("Testing Execute Controller...", () => {
     beforeEach(() => {
@@ -32,11 +32,24 @@ describe("Testing Execute Controller...", () => {
     });
     test("Testing error", async () => {
         let res = mockResponse();
+        let fakeError = new Error("erm what the Σ");
         let failSpy = jest.spyOn(executionController, "generateFailedResponse");
-        mockedExecuteTestAction.mockImplementationOnce(executionContext => {throw new Error("erm what the Σ")});
+        mockedExecuteTestAction.mockImplementationOnce(executionContext => {throw fakeError});
         const executionContext = fakeExecutionContextTestAction;
         await executionController.executeAction(executionContext, res);
-        expect(failSpy).toHaveBeenCalledTimes(1);
-        expect(mockedGetLogger).toHaveBeenCalledTimes(1)
+        expect(mockedGetLogger).toHaveBeenCalledTimes(1);
+        expect(mockedLoggerError).toHaveBeenCalledWith(fakeError);
+        expect(failSpy).toHaveBeenCalledWith(res, executionContext.executionId, fakeError.message);
+    });
+    test("Testing error with bad message", async () => {
+        let res = mockResponse();
+        let fakeError = "erm what the Σ";
+        let failSpy = jest.spyOn(executionController, "generateFailedResponse");
+        mockedExecuteTestAction.mockImplementationOnce(executionContext => {throw fakeError});
+        const executionContext = fakeExecutionContextTestAction;
+        await executionController.executeAction(executionContext, res);
+        expect(mockedGetLogger).toHaveBeenCalledTimes(1);
+        expect(mockedLoggerError).toHaveBeenCalledWith(fakeError);
+        expect(failSpy).toHaveBeenCalledWith(res, executionContext.executionId, "unknown error");
     });
 });
