@@ -6,9 +6,8 @@ import {
 } from '@bigid/apps-infrastructure-node-js';
 import { executeTestAction } from '../utils/actions';
 import { Response } from "express";
-import { getLogger } from "log4js";
 
-// declare const appLogger: import("log4js").Logger;
+import { getLogger } from "log4js";
 
 export class ExecutionController extends ExecutionProvider {
 
@@ -34,8 +33,7 @@ export class ExecutionController extends ExecutionProvider {
                 `Got unresolved action = ${action}`));
       }
     } catch (error) {
-      const appLogger = getLogger();
-      appLogger.error(error);
+      getLogger().error(error);
       this.generateFailedResponse(res, executionId, error instanceof Error ? error.message : 'unknown error');
     }
   }
