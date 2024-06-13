@@ -33,7 +33,6 @@ describe("Testing Execute Controller...", () => {
     test("Testing error", async () => {
         let res = mockResponse();
         let failSpy = jest.spyOn(executionController, "generateFailedResponse");
-        mockedGetLogger.mock
         mockedExecuteTestAction.mockImplementationOnce(executionContext => {throw new Error("erm what the Σ")});
         const executionContext = fakeExecutionContextTestAction;
         await executionController.executeAction(executionContext, res);
